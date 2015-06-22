@@ -16,7 +16,8 @@
       var $input = $('#input');
       var $click = $('#click');
 
-      $click.on('click', function () {
+      $click.on('click', function (e) {
+        e.preventDefault();
         console && console.log('click');
       });
       $input.on('blur', function () {
