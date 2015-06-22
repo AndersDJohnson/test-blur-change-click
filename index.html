@@ -2,30 +2,60 @@
 <html>
   <head>
     <title>Test blur change click</title>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   </head>
   
   <body>
 
-    <input id="input" />
+    <div id="direct">
+      <h2>Direct</h2>
+      <input id="direct-input" />
+      <a href="#" id="direct-click">Click</a>
+    </div>
 
-    <a href="#" id="click">Click</a>
+    <div id="add">
+      <h2>Added Delegated</h2>
+      <button id="add-btn">Add</button>
+    </div>
 
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
 
-      var $input = $('#input');
-      var $click = $('#click');
+      (function () {
+        var $input = $('#direct-input');
+        var $click = $('#direct-click');
 
-      $click.on('click', function (e) {
-        e.preventDefault();
-        console && console.log('click');
-      });
-      $input.on('blur', function () {
-        console && console.log('blur');
-      });
-      $input.on('change', function () {
-        console && console.log('change');
-      });
+        $click.on('click', function (e) {
+          e.preventDefault();
+          console && console.log('click');
+        });
+        $input.on('blur', function () {
+          console && console.log('blur');
+        });
+        $input.on('change', function () {
+          console && console.log('change');
+        });
+      })();
+
+      (function () {
+        var $add = $('#add');
+        var $btn = $('#add-btn');
+        $btn.click(function () {
+          $add.append('<input id="add-input" />');
+          $add.append('<a href="#" id="add-click">Click</a>');
+        });
+
+        $add.on('click', '#add-click', function (e) {
+          e.preventDefault();
+          console && console.log('click');
+        });
+        $add.on('blur', '#add-input', function () {
+          console && console.log('blur');
+        });
+        $add.on('change', '#add-input', function () {
+          console && console.log('change');
+        });
+      })();
 
     </script>
   </body>
