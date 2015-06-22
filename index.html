@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test blur change click</title>
+  </head>
+  
+  <body>
+
+    <input id="input" />
+
+    <a href="#" id="click">Click</a>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+
+      var $input = $('#input');
+      var $click = $('#click');
+
+      $click.on('click', function () {
+        console && console.log('click');
+      });
+      $input.on('blur', function () {
+        console && console.log('blur');
+      });
+      $input.on('change', function () {
+        console && console.log('change');
+      });
+
+    </script>
+  </body>
+</html>
